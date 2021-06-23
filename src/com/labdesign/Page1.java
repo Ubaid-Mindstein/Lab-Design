@@ -14,58 +14,72 @@ import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
 
 import javax.swing.JLabel;
+import javax.swing.JList;
+
 import java.awt.Font;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.Properties;
 import java.awt.Color;
+import java.awt.Component;
+
 import javax.swing.JTextField;
+import javax.swing.DefaultListCellRenderer;
 import javax.swing.ImageIcon;
+import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField.AbstractFormatter;
+import java.awt.SystemColor;
+import com.toedter.calendar.JDateChooser;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
 
 public class Page1 extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField_1;
-	private JLabel lblNewLabel_3;
-	private JTextField textField_2;
-	private JLabel lblNewLabel_4;
-	private JTextField textField_3;
-	private JLabel lblNewLabel_5;
-	private JTextField textField_4;
+	private JTextField textField_Address2;
+	private JLabel Label_City;
+	private JTextField textField_City;
+	private JLabel Label_State;
+	private JTextField textField_State;
+	private JLabel Label_Pin;
+	private JTextField textField_Pin;
 	private JLabel lblContactDetails;
-	private JTextField textField;
-	private JLabel lblNewLabel_6;
-	private JTextField textField_5;
-	private JLabel lblNewLabel_7;
-	private JTextField textField_6;
-	private JLabel lblNewLabel_8;
-	private JLabel lblNewLabel_9;
-	private JTextField textField_7;
-	private JTextField textField_8;
+	private JTextField textField_Address1;
+	private JLabel Label_Phone;
+	private JTextField textField_Phone;
+	private JLabel Label_Mobile;
+	private JTextField textField_Mobile;
+	private JLabel Label_Email;
+	private JLabel Label_Website;
+	private JTextField textField_Email;
+	private JTextField textField_Website;
 	private JLabel lblRegisterationDetails;
-	private JLabel lblNewLabel_10;
-	private JLabel lblNewLabel_11;
-	private JTextField textField_9;
-	private JTextField textField_10;
-	private JLabel lblNewLabel_12;
-	private JTextField textField_11;
-	private JLabel lblNewLabel_13;
-	private JTextField textField_12;
+	private JLabel Label_VAT;
+	private JLabel Label_GST;
+	private JTextField textField_VAT;
+	private JTextField textField_GST;
+	private JLabel Label_PAN;
+	private JTextField textField_PAN;
+	private JLabel Label_CST;
+	private JTextField textField_CST;
 	private JLabel lblRegisterationDetails_1;
-	private JLabel lblNewLabel_14;
-	private JTextField textField_13;
-	private JLabel lblNewLabel_15;
-	private JLabel lblNewLabel_16;
-	private JTextField textField_15;
+	private JLabel Label_DL_01;
+	private JTextField textField_DL_01;
+	private JLabel Label_DL_02;
+	private JLabel Label_DealsIn;
+	private JTextField textField_Deals_In;
 	private JLabel lblNewLabel_17;
-	private JTextField textField_14;
+	private JTextField textField_DL_02;
 	private JLabel lblNewLabel_18;
-	private JLabel lblNewLabel_19;
-	private JTextField textField_16;
+	private JLabel Label_CompanyName;
+	private JTextField textField_CompanyName;
 	private JLabel lblFinancialYearDate;
 	private JLabel lblNewLabel_20;
+	private JTextField textField_Username;
+	private JTextField textField_Password;
 
 	/**
 	 * Launch the application.
@@ -90,7 +104,7 @@ public class Page1 extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1000, 700);
 		contentPane = new JPanel();
-		contentPane.setBackground(Color.WHITE);
+		contentPane.setBackground(Color.LIGHT_GRAY);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(null);
 		setContentPane(contentPane);
@@ -98,268 +112,297 @@ public class Page1 extends JFrame {
 		JLabel lblNewLabel = new JLabel("Basic Details");
 		lblNewLabel.setOpaque(true);
 		lblNewLabel.setForeground(Color.WHITE);
-		lblNewLabel.setBackground(Color.BLUE);
+		lblNewLabel.setBackground(SystemColor.textHighlight);
 		lblNewLabel.setFont(new Font("Monospaced", Font.BOLD | Font.ITALIC, 16));
-		lblNewLabel.setBounds(113, 89, 413, 33);
+		lblNewLabel.setBounds(113, 124, 413, 33);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("Address Line 1");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewLabel_1.setBounds(10, 168, 90, 16);
-		contentPane.add(lblNewLabel_1);
+		JLabel LabelAddress1 = new JLabel("Address Line 1");
+		LabelAddress1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		LabelAddress1.setBounds(10, 226, 90, 16);
+		contentPane.add(LabelAddress1);
 		
-		JLabel lblNewLabel_2 = new JLabel("Address Line 2");
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewLabel_2.setBounds(10, 195, 90, 16);
-		contentPane.add(lblNewLabel_2);
+		JLabel LabelAddress2 = new JLabel("Address Line 2");
+		LabelAddress2.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		LabelAddress2.setBounds(10, 253, 90, 16);
+		contentPane.add(LabelAddress2);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(113, 195, 375, 20);
-		contentPane.add(textField_1);
+		textField_Address2 = new JTextField();
+		textField_Address2.setColumns(10);
+		textField_Address2.setBounds(113, 248, 375, 20);
+		contentPane.add(textField_Address2);
 		
-		lblNewLabel_3 = new JLabel("City");
-		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewLabel_3.setBounds(10, 232, 46, 14);
-		contentPane.add(lblNewLabel_3);
+		Label_City = new JLabel("City");
+		Label_City.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		Label_City.setBounds(10, 280, 46, 14);
+		contentPane.add(Label_City);
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(113, 231, 86, 20);
-		contentPane.add(textField_2);
-		textField_2.setColumns(10);
+		textField_City = new JTextField();
+		textField_City.setBounds(113, 279, 86, 20);
+		contentPane.add(textField_City);
+		textField_City.setColumns(10);
 		
-		lblNewLabel_4 = new JLabel("State");
-		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewLabel_4.setBounds(209, 232, 46, 14);
-		contentPane.add(lblNewLabel_4);
+		Label_State = new JLabel("State");
+		Label_State.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		Label_State.setBounds(209, 280, 37, 14);
+		contentPane.add(Label_State);
 		
-		textField_3 = new JTextField();
-		textField_3.setBounds(246, 231, 86, 20);
-		contentPane.add(textField_3);
-		textField_3.setColumns(10);
+		textField_State = new JTextField();
+		textField_State.setBounds(246, 279, 86, 20);
+		contentPane.add(textField_State);
+		textField_State.setColumns(10);
 		
-		lblNewLabel_5 = new JLabel("Pin");
-		lblNewLabel_5.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewLabel_5.setBounds(342, 232, 26, 14);
-		contentPane.add(lblNewLabel_5);
+		Label_Pin = new JLabel("Pin");
+		Label_Pin.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		Label_Pin.setBounds(342, 280, 26, 14);
+		contentPane.add(Label_Pin);
 		
-		textField_4 = new JTextField();
-		textField_4.setBounds(363, 231, 86, 20);
-		contentPane.add(textField_4);
-		textField_4.setColumns(10);
+		textField_Pin = new JTextField();
+		textField_Pin.setBounds(368, 279, 120, 20);
+		contentPane.add(textField_Pin);
+		textField_Pin.setColumns(10);
 		
 		lblContactDetails = new JLabel("Contact Details");
 		lblContactDetails.setOpaque(true);
 		lblContactDetails.setForeground(Color.WHITE);
 		lblContactDetails.setFont(new Font("Monospaced", Font.BOLD | Font.ITALIC, 16));
-		lblContactDetails.setBackground(Color.BLUE);
-		lblContactDetails.setBounds(113, 262, 413, 33);
+		lblContactDetails.setBackground(SystemColor.textHighlight);
+		lblContactDetails.setBounds(113, 310, 413, 33);
 		contentPane.add(lblContactDetails);
 		
-		textField = new JTextField();
-		textField.setColumns(10);
-		textField.setBounds(113, 168, 375, 20);
-		contentPane.add(textField);
+		textField_Address1 = new JTextField();
+		textField_Address1.setColumns(10);
+		textField_Address1.setBounds(113, 217, 375, 20);
+		contentPane.add(textField_Address1);
 		
-		lblNewLabel_6 = new JLabel("Phone");
-		lblNewLabel_6.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewLabel_6.setBounds(10, 307, 46, 14);
-		contentPane.add(lblNewLabel_6);
+		Label_Phone = new JLabel("Phone");
+		Label_Phone.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		Label_Phone.setBounds(10, 355, 46, 14);
+		contentPane.add(Label_Phone);
 		
-		textField_5 = new JTextField();
-		textField_5.setColumns(10);
-		textField_5.setBounds(113, 306, 123, 20);
-		contentPane.add(textField_5);
+		textField_Phone = new JTextField();
+		textField_Phone.setColumns(10);
+		textField_Phone.setBounds(113, 354, 123, 20);
+		contentPane.add(textField_Phone);
 		
-		lblNewLabel_7 = new JLabel("Mobile");
-		lblNewLabel_7.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewLabel_7.setBounds(246, 307, 46, 14);
-		contentPane.add(lblNewLabel_7);
+		Label_Mobile = new JLabel("Mobile");
+		Label_Mobile.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		Label_Mobile.setBounds(301, 354, 46, 14);
+		contentPane.add(Label_Mobile);
 		
-		textField_6 = new JTextField();
-		textField_6.setBounds(321, 306, 123, 20);
-		contentPane.add(textField_6);
-		textField_6.setColumns(10);
+		textField_Mobile = new JTextField();
+		textField_Mobile.setBounds(368, 354, 123, 20);
+		contentPane.add(textField_Mobile);
+		textField_Mobile.setColumns(10);
 		
-		lblNewLabel_8 = new JLabel("Email");
-		lblNewLabel_8.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewLabel_8.setBounds(10, 338, 46, 14);
-		contentPane.add(lblNewLabel_8);
+		Label_Email = new JLabel("Email");
+		Label_Email.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		Label_Email.setBounds(10, 385, 46, 14);
+		contentPane.add(Label_Email);
 		
-		lblNewLabel_9 = new JLabel("Website");
-		lblNewLabel_9.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewLabel_9.setBounds(246, 338, 63, 14);
-		contentPane.add(lblNewLabel_9);
+		Label_Website = new JLabel("Website");
+		Label_Website.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		Label_Website.setBounds(301, 385, 63, 14);
+		contentPane.add(Label_Website);
 		
-		textField_7 = new JTextField();
-		textField_7.setBounds(113, 337, 123, 20);
-		contentPane.add(textField_7);
-		textField_7.setColumns(10);
+		textField_Email = new JTextField();
+		textField_Email.setBounds(113, 384, 123, 20);
+		contentPane.add(textField_Email);
+		textField_Email.setColumns(10);
 		
-		textField_8 = new JTextField();
-		textField_8.setBounds(321, 337, 123, 20);
-		contentPane.add(textField_8);
-		textField_8.setColumns(10);
+		textField_Website = new JTextField();
+		textField_Website.setBounds(368, 384, 123, 20);
+		contentPane.add(textField_Website);
+		textField_Website.setColumns(10);
 		
 		lblRegisterationDetails = new JLabel("Registeration Details");
 		lblRegisterationDetails.setOpaque(true);
 		lblRegisterationDetails.setForeground(Color.WHITE);
 		lblRegisterationDetails.setFont(new Font("Monospaced", Font.BOLD | Font.ITALIC, 16));
-		lblRegisterationDetails.setBackground(Color.BLUE);
-		lblRegisterationDetails.setBounds(113, 369, 413, 33);
+		lblRegisterationDetails.setBackground(SystemColor.textHighlight);
+		lblRegisterationDetails.setBounds(113, 415, 413, 33);
 		contentPane.add(lblRegisterationDetails);
 		
-		lblNewLabel_10 = new JLabel("VAT");
-		lblNewLabel_10.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewLabel_10.setBounds(10, 414, 46, 14);
-		contentPane.add(lblNewLabel_10);
+		Label_VAT = new JLabel("VAT");
+		Label_VAT.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		Label_VAT.setBounds(10, 466, 46, 14);
+		contentPane.add(Label_VAT);
 		
-		lblNewLabel_11 = new JLabel("GST");
-		lblNewLabel_11.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewLabel_11.setBounds(246, 413, 46, 14);
-		contentPane.add(lblNewLabel_11);
+		Label_GST = new JLabel("GST");
+		Label_GST.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		Label_GST.setBounds(263, 471, 46, 14);
+		contentPane.add(Label_GST);
 		
-		textField_9 = new JTextField();
-		textField_9.setBounds(113, 408, 123, 20);
-		contentPane.add(textField_9);
-		textField_9.setColumns(10);
+		textField_VAT = new JTextField();
+		textField_VAT.setBounds(113, 465, 123, 20);
+		contentPane.add(textField_VAT);
+		textField_VAT.setColumns(10);
 		
-		textField_10 = new JTextField();
-		textField_10.setBounds(321, 408, 123, 20);
-		contentPane.add(textField_10);
-		textField_10.setColumns(10);
+		textField_GST = new JTextField();
+		textField_GST.setBounds(321, 465, 123, 20);
+		contentPane.add(textField_GST);
+		textField_GST.setColumns(10);
 		
-		lblNewLabel_12 = new JLabel("PAN");
-		lblNewLabel_12.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewLabel_12.setBounds(10, 444, 46, 14);
-		contentPane.add(lblNewLabel_12);
+		Label_PAN = new JLabel("PAN");
+		Label_PAN.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		Label_PAN.setBounds(10, 496, 46, 14);
+		contentPane.add(Label_PAN);
 		
-		textField_11 = new JTextField();
-		textField_11.setBounds(113, 438, 123, 20);
-		contentPane.add(textField_11);
-		textField_11.setColumns(10);
+		textField_PAN = new JTextField();
+		textField_PAN.setBounds(113, 495, 123, 20);
+		contentPane.add(textField_PAN);
+		textField_PAN.setColumns(10);
 		
-		lblNewLabel_13 = new JLabel("CST");
-		lblNewLabel_13.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewLabel_13.setBounds(246, 438, 46, 14);
-		contentPane.add(lblNewLabel_13);
+		Label_CST = new JLabel("CST");
+		Label_CST.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		Label_CST.setBounds(263, 496, 46, 14);
+		contentPane.add(Label_CST);
 		
-		textField_12 = new JTextField();
-		textField_12.setColumns(10);
-		textField_12.setBounds(321, 439, 123, 20);
-		contentPane.add(textField_12);
+		textField_CST = new JTextField();
+		textField_CST.setColumns(10);
+		textField_CST.setBounds(321, 495, 123, 20);
+		contentPane.add(textField_CST);
 		
 		lblRegisterationDetails_1 = new JLabel("Registeration Details");
 		lblRegisterationDetails_1.setOpaque(true);
 		lblRegisterationDetails_1.setForeground(Color.WHITE);
 		lblRegisterationDetails_1.setFont(new Font("Monospaced", Font.BOLD | Font.ITALIC, 16));
-		lblRegisterationDetails_1.setBackground(Color.BLUE);
-		lblRegisterationDetails_1.setBounds(113, 476, 413, 33);
+		lblRegisterationDetails_1.setBackground(SystemColor.textHighlight);
+		lblRegisterationDetails_1.setBounds(113, 530, 413, 33);
 		contentPane.add(lblRegisterationDetails_1);
 		
-		lblNewLabel_14 = new JLabel("DL NO 01");
-		lblNewLabel_14.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewLabel_14.setBounds(10, 526, 60, 14);
-		contentPane.add(lblNewLabel_14);
+		Label_DL_01 = new JLabel("DL NO 01");
+		Label_DL_01.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		Label_DL_01.setBounds(10, 580, 60, 14);
+		contentPane.add(Label_DL_01);
 		
-		textField_13 = new JTextField();
-		textField_13.setBounds(113, 520, 123, 20);
-		contentPane.add(textField_13);
-		textField_13.setColumns(10);
+		textField_DL_01 = new JTextField();
+		textField_DL_01.setBounds(113, 574, 123, 20);
+		contentPane.add(textField_DL_01);
+		textField_DL_01.setColumns(10);
 		
-		lblNewLabel_15 = new JLabel("DL NO 02");
-		lblNewLabel_15.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewLabel_15.setBounds(246, 521, 60, 14);
-		contentPane.add(lblNewLabel_15);
+		Label_DL_02 = new JLabel("DL NO 02");
+		Label_DL_02.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		Label_DL_02.setBounds(249, 575, 60, 14);
+		contentPane.add(Label_DL_02);
 		
-		lblNewLabel_16 = new JLabel("Deals In");
-		lblNewLabel_16.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewLabel_16.setBounds(10, 551, 60, 14);
-		contentPane.add(lblNewLabel_16);
+		Label_DealsIn = new JLabel("Deals In");
+		Label_DealsIn.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		Label_DealsIn.setBounds(10, 605, 60, 14);
+		contentPane.add(Label_DealsIn);
 		
-		textField_15 = new JTextField();
-		textField_15.setBounds(113, 550, 375, 20);
-		contentPane.add(textField_15);
-		textField_15.setColumns(10);
+		textField_Deals_In = new JTextField();
+		textField_Deals_In.setBounds(113, 604, 375, 20);
+		contentPane.add(textField_Deals_In);
+		textField_Deals_In.setColumns(10);
 		
 		lblNewLabel_17 = new JLabel("New label");
-		lblNewLabel_17.setIcon(new ImageIcon("C:\\Users\\Administrator\\Documents\\logo_create_company.PNG"));
+		lblNewLabel_17.setIcon(new ImageIcon("C:\\Users\\Administrator\\eclipse-workspace\\Lab Design\\image_assets\\icon.png"));
 		lblNewLabel_17.setBounds(10, 11, 129, 75);
 		contentPane.add(lblNewLabel_17);
 		
-		textField_14 = new JTextField();
-		textField_14.setColumns(10);
-		textField_14.setBounds(321, 520, 140, 20);
-		contentPane.add(textField_14);
+		textField_DL_02 = new JTextField();
+		textField_DL_02.setColumns(10);
+		textField_DL_02.setBounds(320, 574, 129, 20);
+		contentPane.add(textField_DL_02);
 		
-		lblNewLabel_18 = new JLabel("Create a new company");
+		lblNewLabel_18 = new JLabel("Insert Company Details");
 		lblNewLabel_18.setForeground(new Color(0, 0, 128));
-		lblNewLabel_18.setFont(new Font("Tahoma", Font.BOLD, 22));
-		lblNewLabel_18.setBounds(160, 14, 289, 64);
+		lblNewLabel_18.setFont(new Font("Sylfaen", Font.BOLD, 32));
+		lblNewLabel_18.setBounds(342, 14, 350, 64);
 		contentPane.add(lblNewLabel_18);
 		
-		lblNewLabel_19 = new JLabel("Company Name");
-		lblNewLabel_19.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewLabel_19.setBounds(10, 141, 99, 14);
-		contentPane.add(lblNewLabel_19);
+		Label_CompanyName = new JLabel("Company Name");
+		Label_CompanyName.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		Label_CompanyName.setBounds(10, 187, 99, 14);
+		contentPane.add(Label_CompanyName);
 		
-		textField_16 = new JTextField();
-		textField_16.setColumns(10);
-		textField_16.setBounds(113, 133, 375, 20);
-		contentPane.add(textField_16);
+		textField_CompanyName = new JTextField();
+		textField_CompanyName.setColumns(10);
+		textField_CompanyName.setBounds(113, 186, 375, 20);
+		contentPane.add(textField_CompanyName);
 		
 		lblFinancialYearDate = new JLabel("Financial Year Date Range");
 		lblFinancialYearDate.setOpaque(true);
 		lblFinancialYearDate.setForeground(Color.WHITE);
 		lblFinancialYearDate.setFont(new Font("Monospaced", Font.BOLD | Font.ITALIC, 16));
-		lblFinancialYearDate.setBackground(Color.BLUE);
-		lblFinancialYearDate.setBounds(561, 89, 413, 33);
+		lblFinancialYearDate.setBackground(SystemColor.textHighlight);
+		lblFinancialYearDate.setBounds(561, 124, 413, 33);
 		contentPane.add(lblFinancialYearDate);
 		
-		lblNewLabel_20 = new JLabel("Financial Year Start Date");
-		lblNewLabel_20.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblNewLabel_20.setBounds(561, 143, 158, 14);
-		contentPane.add(lblNewLabel_20);
-
-		//Date component 
-		/*UtilDateModel model = new org.jdatepicker.UtilDateModel();
-		Properties properties = new Properties();
-		properties.put("text.today", "Today");
-		properties.put("text.month", "Month");
-		properties.put("text.year", "Year");
+		JLabel Label_FinStart = new JLabel("Financial Year Start Date");
+		Label_FinStart.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		Label_FinStart.setBounds(561, 189, 164, 14);
+		contentPane.add(Label_FinStart);
 		
-		JDatePanelImpl datePanel = new JDatePanelImpl(model, properties);
-		JDatePickerImpl datePicker = new JDatePickerImpl(datePanel, new DateLabelFormatter());
-		datePicker.setBounds(575,143,100,100);
-		contentPane.add(datePicker);*/
+		JDateChooser dateChooser_YearStartDate = new JDateChooser();
+		dateChooser_YearStartDate.setBounds(745, 187, 145, 20);
+		contentPane.add(dateChooser_YearStartDate);
+		
+		JLabel Label_FinEnd = new JLabel("Financial Year Close Date");
+		Label_FinEnd.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		Label_FinEnd.setBounds(561, 220, 164, 14);
+		contentPane.add(Label_FinEnd);
+		
+		JDateChooser dateChooser_YearEndDate = new JDateChooser();
+		dateChooser_YearEndDate.setBounds(745, 222, 145, 20);
+		contentPane.add(dateChooser_YearEndDate);
+		
+		JLabel lblDatabase = new JLabel("Database");
+		lblDatabase.setOpaque(true);
+		lblDatabase.setForeground(Color.WHITE);
+		lblDatabase.setFont(new Font("Monospaced", Font.BOLD | Font.ITALIC, 16));
+		lblDatabase.setBackground(SystemColor.textHighlight);
+		lblDatabase.setBounds(561, 310, 413, 33);
+		contentPane.add(lblDatabase);
+		
+		JButton button_ConfigureDatabase = new JButton("Configure Database");
+		button_ConfigureDatabase.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		button_ConfigureDatabase.setBounds(561, 353, 223, 23);
+		contentPane.add(button_ConfigureDatabase);
+		
+		JLabel lblReplicateExistingCompany = new JLabel("Replicate Existing Company Data");
+		lblReplicateExistingCompany.setOpaque(true);
+		lblReplicateExistingCompany.setForeground(Color.WHITE);
+		lblReplicateExistingCompany.setFont(new Font("Monospaced", Font.BOLD | Font.ITALIC, 16));
+		lblReplicateExistingCompany.setBackground(SystemColor.textHighlight);
+		lblReplicateExistingCompany.setBounds(561, 415, 413, 33);
+		contentPane.add(lblReplicateExistingCompany);
+		
+		JCheckBox checkbox_GetExistingCompanyData = new JCheckBox("Get data from existing company");
+		checkbox_GetExistingCompanyData.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		checkbox_GetExistingCompanyData.setBounds(561, 464, 223, 23);
+		contentPane.add(checkbox_GetExistingCompanyData);
+		
+		JLabel lblCorrespondingUser = new JLabel("Corresponding User");
+		lblCorrespondingUser.setOpaque(true);
+		lblCorrespondingUser.setForeground(Color.WHITE);
+		lblCorrespondingUser.setFont(new Font("Monospaced", Font.BOLD | Font.ITALIC, 16));
+		lblCorrespondingUser.setBackground(SystemColor.textHighlight);
+		lblCorrespondingUser.setBounds(561, 530, 413, 33);
+		contentPane.add(lblCorrespondingUser);
+		
+		JLabel Label_Username = new JLabel("Username");
+		Label_Username.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		Label_Username.setBounds(561, 582, 76, 14);
+		contentPane.add(Label_Username);
+		
+		textField_Username = new JTextField();
+		textField_Username.setBounds(647, 579, 137, 20);
+		contentPane.add(textField_Username);
+		textField_Username.setColumns(10);
+		
+		JLabel Label_Password = new JLabel("Password");
+		Label_Password.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		Label_Password.setBounds(561, 607, 76, 14);
+		contentPane.add(Label_Password);
+		
+		textField_Password = new JTextField();
+		textField_Password.setColumns(10);
+		textField_Password.setBounds(647, 604, 137, 20);
+		contentPane.add(textField_Password);
+			
+
 		
 	}
-	
-	
-	/*class DateLabelFormatter extends AbstractFormatter{
-
-		private String datePattern = "yyyy-MM-dd";
-		private SimpleDateFormat dateFormatter =  new SimpleDateFormat(datePattern);
-		
-		@Override
-		public Object stringToValue(String text) throws ParseException {
-			// TODO Auto-generated method stub
-			
-			return dateFormatter.parseObject(text);
-		}
-
-		@Override
-		public String valueToString(Object value) throws ParseException {
-			// TODO Auto-generated method stub
-			if(value != null) {
-				Calendar calender = (Calendar)value;
-				return dateFormatter.format(calender.getTime());
-			}
-			
-			
-			return "";
-		}
-		
-	}*/
-	
 }
